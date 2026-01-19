@@ -7,13 +7,21 @@ import spacy
 import time
 import requests
 import json
-import joblib  # ✅ to load your trained model and vectorizer
+import joblib  
+import os
+
 
 # ------------------------------
 # Backend URLs
 # ------------------------------
-AUTH_URL = "http://127.0.0.1:8000/api/auth"
-FINANCE_URL = "http://127.0.0.1:8000/api/finance"
+BACKEND_BASE_URL = os.getenv(
+    "BACKEND_BASE_URL",
+    "http://127.0.0.1:8000"  # fallback for local dev
+)
+
+AUTH_URL = f"{BACKEND_BASE_URL}/api/auth"
+FINANCE_URL = f"{BACKEND_BASE_URL}/api/finance"
+
 
 # ------------------------------
 # Streamlit Page Setup
